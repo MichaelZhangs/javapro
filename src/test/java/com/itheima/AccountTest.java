@@ -1,8 +1,6 @@
 package com.itheima;
 
 import com.itheima.dao.IAccountDao;
-import com.itheima.dao.IUserDao;
-import com.itheima.dao.impl.UserDaoImpl;
 import com.itheima.domain.Account;
 import com.itheima.domain.AccountUser;
 import org.apache.ibatis.io.Resources;
