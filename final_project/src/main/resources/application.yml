@@ -1,0 +1,15 @@
+mybatis-plus:
+  configuration:
+    cache-enabled: false
+    jdbc-type-for-null: 'null'
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      insert-strategy: ignored
+      update-strategy: ignored
+      select-strategy: ignored
+logging:
+  file:
+    name: loan.log
+  level:
+    root: debug

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mywork.loan.dao.UserDao">
+
+    <!--    定义user的resultMap-->
+    <resultMap id="User" type="com.mywork.loan.entity.User">
+        <id property="id" column="id" jdbcType="INTEGER"></id>
+        <result property="username" column="username" jdbcType="VARCHAR"></result>
+        <result property="phone" column="phone" jdbcType="VARCHAR"></result>
+        <result property="sex" column="sex" jdbcType="VARCHAR"></result>
+        <result property="password" column="password" jdbcType="VARCHAR"></result>
+        <result property="birthday" column="birthday" jdbcType="VARCHAR"></result>
+        <result property="edu" column="edu" jdbcType="VARCHAR"></result>
+        <result property="role" column="role" jdbcType="VARCHAR"></result>
+        <result property="info" column="info" jdbcType="VARCHAR"></result>
+        <result property="email" column="email" jdbcType="VARCHAR"></result>
+
+    </resultMap>
+
+
+    <!--    保存用户-->
+    <insert id="saveUser" parameterType="com.mywork.loan.entity.User">
+
+        insert into user(username,phone, sex, password, birthday, edu, role, info, email)
+        values( #{username , jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{sex, jdbcType=VARCHAR }, #{password , jdbcType=VARCHAR},
+               #{birthday, jdbcType=VARCHAR}, #{edu, jdbcType=VARCHAR },
+               #{role, jdbcType=VARCHAR }, #{info, jdbcType=VARCHAR }, #{email, jdbcType=VARCHAR });
+    </insert>
+<!--   需要用count(*) 来判断， 否则会出现注册时没有数据返回null  -->
+    <select id="judgePhone"  parameterType="string" resultType="java.lang.Integer">
+        select count(*)  from user where phone=#{phone};
+    </select>
+
+    <select id="Login"  parameterType="string" resultType="com.mywork.loan.entity.User">
+        select *  from user where phone=#{phone} and password=#{password};
+    </select>
+<!--    通过电话号码查询用户信息-->
+    <select id="userInfo"  parameterType="string" resultType="com.mywork.loan.entity.User">
+        select *  from user where phone=#{phone} ;
+    </select>
+<!--更新用户信息-->
+    <update  id="updateUser"  parameterType="com.mywork.loan.entity.User">
+        update user set username=#{username}, edu=#{edu} , sex=#{sex} , birthday=#{birthday} , email=#{email} ,info=#{info}
+                   ,role=#{role}
+                    where phone=#{phone};
+    </update>
+
+</mapper>
