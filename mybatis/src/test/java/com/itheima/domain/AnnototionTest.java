@@ -59,7 +59,7 @@ public class AnnototionTest {
     @Test
     public void testDelete(){
 
-        userDao.deleteUser(60);
+        userDao.deleteUser(58);
 
     }
     @Test
