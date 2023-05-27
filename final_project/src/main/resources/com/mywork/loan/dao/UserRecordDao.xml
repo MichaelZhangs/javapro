@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mywork.loan.dao.UserRecordDao">
+
+    <!--    定义user的resultMap-->
+    <resultMap id="UserRecord" type="com.mywork.loan.entity.UserRecord">
+        <id property="id" column="id" jdbcType="INTEGER"></id>
+        <result property="username" column="username" jdbcType="VARCHAR"></result>
+        <result property="phone" column="phone" jdbcType="VARCHAR"></result>
+        <result property="amount" column="amount" jdbcType="INTEGER"></result>
+        <result property="create_date" column="create_date" jdbcType="TIMESTAMP" ></result>
+        <result property="check_status" column="check_status" jdbcType="VARCHAR"></result>
+
+    </resultMap>
+
+    <!--    保存用户-->
+    <insert id="saveUserRecord" parameterType="com.mywork.loan.entity.UserRecord">
+
+        insert into user_record(username,phone, amount, create_date, check_status)
+        values( #{username , jdbcType=VARCHAR},
+               #{phone, jdbcType=VARCHAR},
+               #{amount, jdbcType=INTEGER},
+               #{create_date, jdbcType=TIMESTAMP},
+               #{check_status, jdbcType=VARCHAR});
+    </insert>
+
+</mapper>

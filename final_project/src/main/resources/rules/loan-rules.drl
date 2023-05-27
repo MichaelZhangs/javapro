@@ -1,0 +1,67 @@
+package rules;
+import com.mywork.finalwork.entity.loanAmount;
+
+rule "loan_1"
+
+when
+    $s:loanAmount(age <= 20)
+then
+    $s.setAmount(0);
+    $s.setInfo("年纪太小， 无法贷款");
+    System.out.println("年纪太小， 无法贷款");
+end
+
+rule "loan_2"
+
+when
+    $s:loanAmount(age > 20 &&  edu=="大专")
+then
+    $s.setAmount(20000);
+    $s.setInfo("可以借出2万");
+    System.out.println("可以借出2万");
+end
+
+rule "loan_3"
+
+when
+    $s:loanAmount(age > 20 && edu=="本科")
+then
+    $s.setAmount(30000);
+    $s.setInfo("可以借出3万");
+    System.out.println("可以借出3万");
+end
+
+rule "loan_4"
+
+when
+    $s:loanAmount(age > 20 && edu=="硕士")
+then
+    $s.setAmount(50000);
+   $s.setInfo("可以借出5万");
+    System.out.println("可以借出5万");
+end
+
+rule "loan_5"
+
+when
+    $s:loanAmount(age > 20 && edu=="博士")
+then
+    $s.setAmount(70000);
+    $s.setInfo("可以借出7万");
+
+    System.out.println("可以借出7万");
+end
+
+rule "loan_6"
+
+when
+    $s:loanAmount(age > 70)
+then
+    $s.setAmount(0);
+    $s.setInfo("年纪太大， 不宜贷款");
+    System.out.println("年纪太大， 不宜贷款");
+end
+
+
+
+
