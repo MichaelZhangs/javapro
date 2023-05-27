@@ -37,13 +37,7 @@ public class UserTest {
 //        userDao = sqlSession.getMapper(IUserDao.class);
     }
 
-    @After // 测试执行方法之后执行
-    public void destroy() throws Exception {
-//        sqlSession.commit();
-        sqlSession.close();
-        in.close();
 
-    }
 
     @Test
     public void testFindAll() {
